@@ -1,0 +1,14 @@
+# Project
+lib/
+
+# npm
+node_modules/
+npm-debug.log
+
+# OSX
+.DS_Store
+
+# VIM
+*.swp
+*.swo
+
