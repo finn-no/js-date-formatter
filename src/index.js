@@ -27,12 +27,67 @@ const addTime = (dateWithoutTime, hours, minutes) => {
   return `${dateWithoutTime} ${hours}:${minutes}`;
 };
 
-const formatDefault = (fullYearNumber, monthNumber, dateInMonthNumber) => {
-  const dateInMonth = padWithZero(dateInMonthNumber);
-  const month = abbreviatedMonthNames[monthNumber];
-  const year = `${fullYearNumber}`;
+const formatAbsoluteDate = date => {
+  const year = `${date.getFullYear()}`;
+  const month = abbreviatedMonthNames[date.getMonth()];
+  const dateInMonth = padWithZero(date.getDate());
 
   return `${dateInMonth}. ${month} ${year}`;
+};
+
+const formatDefault = date => {
+  const differenceSeconds = Math.floor((Date.now() - date.getTime()) / 1000);
+
+  if (differenceSeconds < 0) {
+    // Date is in the future, so return absolute date with time.
+    return addTime(
+      formatAbsoluteDate(date),
+      padWithZero(date.getHours()),
+      padWithZero(date.getMinutes())
+    );
+  }
+
+  const hoursInDay = 24;
+  const minutesInHour = 60;
+  const secondsInMinute = 60;
+  const secondsInHour = secondsInMinute * minutesInHour;
+  const secondsInDay = secondsInHour * hoursInDay;
+
+  if (differenceSeconds < secondsInMinute) {
+    return 'Et øyeblikk siden';
+  }
+
+  if (differenceSeconds < secondsInHour) {
+    const differenceMinutes = Math.floor(differenceSeconds / secondsInMinute);
+
+    if (differenceMinutes === 1) {
+      return '1 minutt siden';
+    }
+
+    return `${differenceMinutes} minutter siden`;
+  }
+
+  if (differenceSeconds < secondsInDay) {
+    const differenceHours = Math.floor(differenceSeconds / secondsInHour);
+
+    if (differenceHours === 1) {
+      return '1 time siden';
+    }
+
+    return `${differenceHours} timer siden`;
+  }
+
+  if (differenceSeconds < 3 * secondsInDay) {
+    const differenceDays = Math.floor(differenceSeconds / secondsInDay);
+
+    if (differenceDays === 1) {
+      return '1 dag siden';
+    }
+
+    return '2 dager siden';
+  }
+
+  return formatAbsoluteDate(date);
 };
 
 export default function format(date, options) {
@@ -43,6 +98,8 @@ export default function format(date, options) {
   const dateInMonthNumber = date.getDate();
   const monthNumber = date.getMonth();
   const fullYearNumber = date.getFullYear();
+  const hoursNumber = date.getHours();
+  const minutesNumber = date.getMinutes();
 
   if (options) {
     if (options.monthAsNumber) {
@@ -53,8 +110,8 @@ export default function format(date, options) {
       const stringWithoutTime = `${dateInMonth}.${month}.${year}`;
 
       if (options.showTime) {
-        const hours = padWithZero(date.getHours());
-        const minutes = padWithZero(date.getMinutes());
+        const hours = padWithZero(hoursNumber);
+        const minutes = padWithZero(minutesNumber);
 
         return addTime(stringWithoutTime, hours, minutes);
       }
@@ -62,7 +119,7 @@ export default function format(date, options) {
       return stringWithoutTime;
     }
 
-    const defaultDateString = formatDefault(fullYearNumber, monthNumber, dateInMonthNumber);
+    const defaultDateString = formatDefault(date);
 
     if (options.showTime) {
       const hours = padWithZero(date.getHours());
@@ -74,6 +131,6 @@ export default function format(date, options) {
     return defaultDateString;
   }
 
-  return formatDefault(fullYearNumber, monthNumber, dateInMonthNumber);
+  return formatDefault(date);
 }
 
