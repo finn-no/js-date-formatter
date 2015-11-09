@@ -1,6 +1,6 @@
 {
   "name": "finn-date-formatter",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Date formatter compliant with FINN's styleguide for date formatting: https://styleguide.finn.no/",
   "main": "lib/index.js",
   "scripts": {
@@ -28,4 +28,3 @@
     "rimraf": "^2.4.3"
   }
 }
-
