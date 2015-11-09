@@ -1,11 +1,14 @@
 {
   "name": "finn-date-formatter",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Date formatter compliant with FINN's styleguide for date formatting: https://styleguide.finn.no/",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "scripts": {
     "lint": "eslint .",
-    "test": "mocha --compilers js:babel/register -R nyan"
+    "test": "mocha --compilers js:babel/register -R nyan",
+    "clean": "rimraf lib/",
+    "build": "babel src/ --out-dir lib/",
+    "prepublish": "npm run clean && npm run build"
   },
   "repository": {
     "type": "git",
@@ -25,3 +28,4 @@
     "rimraf": "^2.4.3"
   }
 }
+
