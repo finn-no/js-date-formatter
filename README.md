@@ -80,8 +80,3 @@ See the unit tests in `test/` for further usage.
 - [Mocha](https://mochajs.org/) unit tests: `npm run test`
 - [ESLint](http://eslint.org/) linting extending the [Airbnb JS style guide](https://github.com/airbnb/javascript): `npm run lint`
 - Build with [Babel](http://babeljs.io/): `npm run build`
-
-#### Releasing a new version
-
-See the [guide to publishing to FINN's local npm registry](https://confluence.finn.no/display/TEKK/How+to+publish+to+our+local+NPM+registry).
-
