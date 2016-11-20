@@ -3,6 +3,7 @@
   "version": "0.2.0",
   "description": "Date formatter compliant with FINN's styleguide for date formatting: https://styleguide.finn.no/",
   "main": "lib/index.js",
+  "license": "MIT",
   "scripts": {
     "lint": "eslint .",
     "test": "mocha --compilers js:babel/register -R nyan",
