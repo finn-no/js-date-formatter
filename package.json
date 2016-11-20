@@ -1,6 +1,6 @@
 {
   "name": "finn-date-formatter",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Date formatter compliant with FINN's styleguide for date formatting: https://styleguide.finn.no/",
   "main": "lib/index.js",
   "license": "MIT",
