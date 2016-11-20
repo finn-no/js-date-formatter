@@ -13,10 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://git.finn.no/projects/LIBS/repos/finn-date-formatter"
-  },
-  "publishConfig": {
-    "registry": "http://npm.finntech.no"
+    "url": "finn-no/js-date-formatter"
   },
   "dependencies": {},
   "devDependencies": {
