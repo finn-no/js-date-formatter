@@ -27,14 +27,7 @@ npm package for formatting Dates, FINN style. From the [styleguide](https://styl
 
 ### Installation
 
-Use the `npm.finntech.no` registry by adding the following to your `.npmrc` file:
-
-```
-# download all packages from the FINN npm registry
-registry=http://npm.finntech.no/
-```
-
-Then install via npm:
+Install via npm:
 
 `npm install --save finn-date-formatter`
 
