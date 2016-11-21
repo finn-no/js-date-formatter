@@ -1,5 +1,8 @@
 # FINN date formatter
 
+[![Build Status](https://travis-ci.org/finn-no/js-code-style.svg?branch=master)](https://travis-ci.org/finn-no/js-code-style)
+
+
 __THIS PROJECT IS AN ONGOING EXPERIMENT.__ No support can be expected.
 
 npm package for formatting Dates, FINN style. From the [styleguide](https://styleguide.finn.no/) (November 6, 2015):
