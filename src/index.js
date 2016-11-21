@@ -1,5 +1,3 @@
-import IllegalArgumentException from './IllegalArgumentException';
-
 const abbreviatedMonthNames = [
     'jan',
     'feb',
@@ -90,7 +88,7 @@ const formatDefault = date => {
 
 export default function format (date, options) {
     if (!date || !(date instanceof Date)) {
-        throw new IllegalArgumentException(`Parameter ${date} is not an instance of Date`);
+        throw new TypeError(`Parameter ${date} is not an instance of Date`);
     }
 
     const dateInMonthNumber = date.getDate();
